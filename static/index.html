@@ -162,7 +162,11 @@
 	function selectImage(imgN)
 	{
 		
-		$("#sideBar").append("<li><a href=\"#\" onclick=\"$('#hoverTransparency').css({'top':"+ y0 +",'left':" + x0+ ", 'width':'" + (x2 - x1) + "','height':'"+ (y2 - y1) +"'}); return true;\">Asdf</a></li>");
+		$("#sideBar").append("<li><a href=\"#\" onclick=\"$('#hoverTransparency').css({'top':"
+							+ y0 +",'left':" + x0+ ", 'width':'" + (x2 - x1) + "','height':'"
+							+ (y2 - y1) +"'}); return true;\">"
+							+ "Image " + imgN + ": from: " + x1 + ", " + y1 + " to " + x2 + ", " 
+							+ y2 +"</a></li>");
 		$("#dialog").dialog('close');
 	}
 	</script>
