@@ -78,7 +78,8 @@
           </div>
 
       <hr>
-	
+	<div id="hoverTransparency" style="background: #FFEEEE; opacity: 0.6; width:0px; height: 0px; position: absolute;">&nbsp;</div>    
+    
 	<div id="dialog" title="Basic dialog">
 		<p id="positions">&nbsp;</p>
 		<ul class="thumbnails">
@@ -100,10 +101,8 @@
 
 		</ul>
 	</div>
-    
-    <div id="hoverTransparency">&nbsp;</div>
     <footer>
-        <p>&copy; Company 2012</p>
+        <p>&copy; Ratio Interactive 2012</p>
       </footer>
 
     </div><!--/.fluid-container-->
@@ -133,13 +132,15 @@
 	});
 	
 	
-	var x1,y1,x2,y2;
+	var x0,y0,x1,y1,x2,y2;
 	var clicked = false;
 	
 	jQuery(document).ready(function(){
 	   	$("#heroImage").click(function(e){
 	   		if (clicked == false)
 	   		{
+   				x0 = e.pageX;
+   				y0 = e.pageY;
    				x1 = e.pageX - this.offsetLeft;
 				y1 = e.pageY - this.offsetTop;
    	
@@ -160,7 +161,8 @@
 	})
 	function selectImage(imgN)
 	{
-		$("#sideBar").append("<li>Image " + imgN + ": "+ x1 +', '+ y1 + " to " + x2 +', '+ y2 +"</li>");
+		
+		$("#sideBar").append("<li><a href=\"#\" onclick=\"$('#hoverTransparency').css({'top':"+ y0 +",'left':" + x0+ ", 'width':'" + (x2 - x1) + "','height':'"+ (y2 - y1) +"'}); return true;\">Asdf</a></li>");
 		$("#dialog").dialog('close');
 	}
 	</script>
