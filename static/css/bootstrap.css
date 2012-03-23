@@ -1,5 +1,5 @@
 /*!
- * Bootstrap v2.0.2
+ * Bootstrap v2.0.1
  *
  * Copyright 2012 Twitter, Inc
  * Licensed under the Apache License v2.0
@@ -200,6 +200,10 @@ a:hover {
 .span2 {
   width: 140px;
 }
+.span1_5 {
+  width: 95px;
+}
+
 .span1 {
   width: 60px;
 }

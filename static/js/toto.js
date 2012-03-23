@@ -112,4 +112,3 @@ Toto.prototype.createAccount = function(userID, password, args, successCallback,
     successCallback(response);
   }, errorCallback);
 };
-
