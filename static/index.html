@@ -151,7 +151,7 @@
 	}
 	
 	#uploadbox {
-		display: inherit;
+		display: none;
 		position: absolute;
 		left: 20px;
 		top: 0px;
@@ -164,7 +164,7 @@
 		margin-top: 150px;
 	}
 	
-	#uploadbox textarea {
+	#uploadbox input {
 		width: 475px;
 		height: 144px;
 		border: 1px solid gray;
@@ -176,7 +176,7 @@
 		margin-bottom: 10px;
 	}
 	
-	#uploadbox button {
+	#uploadbox .uploadBtn {
 		display: block;
 		width: 100%;
 		height: 40px;
@@ -218,16 +218,16 @@
 
 	<div id='uploadbox' class='black75'>
 		<span class='title'>UPLOAD IMAGE</span>
-		<form>
-			<textarea placeholder="add a description"></textarea>
-			<input type="file" name="" value=""/>
-			<button>UPLOAD</button>
+		<form action="" onsubmit="">
+			<input type="text" name="file" placeholder="add a description" />
+			<input type="file" name="file" />
+			<input id="uploadBtn" type="submit" class="uploadBtn" value="Upload" />
 		</form>
 	</div>
 
 	<div id="pic" style="background-image:url('uploads/homeimg.jpg');">
 		<h1 class='black75'><span class='img'></span><span class='seo'>Simple.GRD</span></h1>
-		<div id='uploadbut' class='black75' title='upload new image'><span></span></div>
+		<div id='uploadbut' onclick="toggleShowUploadModal()" class='black75' title='upload new image'><span></span></div>
 		<div id='editbut' class='black75' title='edit image'><span></span></div>
 		<div id='reloadbut' class='black75' title='reload image'><span></span></div>
 		<h2 class='description'>
@@ -249,5 +249,17 @@
 	</div>
 </div>
 
+<script src="js/jquery-1.7.1.min.js"></script>
+<script src="js/jquery-ui-1.8.18.custom.min.js"></script>
+<script type="text/javascript">
+	function toggleShowUploadModal(){
+		var uploadBox = document.getElementById('uploadbox');
+		if ($(uploadBox).is(":visible")){
+			$(uploadBox).hide();
+		} else{
+			$(uploadBox).show();
+		} 				
+	}
+</script>
 </body>
 </html>
