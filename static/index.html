@@ -8,6 +8,7 @@
 	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
 	<link href="http://fonts.googleapis.com/css?family=Abel:regular,bold" rel="stylesheet" type="text/css"/>
+	<link href="css/jquery-ui-1.8.18.custom.css" rel="stylesheet">
 	<style>
 	body {
 		padding: 0;
@@ -157,6 +158,19 @@
 		top: 0px;
 		color: White;
 		width: 495px;
+		height: 372px;
+		z-index: 200;
+		padding: 20px;
+		margin-left: 215px;
+		margin-top: 150px;
+	}
+	
+	#choosePicture {
+		position: absolute;
+		left: 20px;
+		top: 0px;
+		color: White;
+		width: 495px;
 		height: 310px;
 		z-index: 200;
 		padding: 20px;
@@ -224,11 +238,29 @@
 			<input id="uploadBtn" type="submit" class="uploadBtn" value="Upload" />
 		</form>
 	</div>
+	<div id="choosePicture" class="black75">
+		<a href="#" onclick="choosePic(1);"><img src="http://placehold.it/120x90"></a>
+		<a href="#" onclick="choosePic(2);"><img src="http://placehold.it/120x90"></a>
+		<a href="#" onclick="choosePic(3);"><img src="http://placehold.it/120x90"></a>
+		<a href="#" onclick="choosePic(4);"><img src="http://placehold.it/120x90"></a><br/>
+		<a href="#" onclick="choosePic(5);"><img src="http://placehold.it/120x90"></a>
+		<a href="#" onclick="choosePic(6);"><img src="http://placehold.it/120x90"></a>
+		<a href="#" onclick="choosePic(7);"><img src="http://placehold.it/120x90"></a>
+		<a href="#" onclick="choosePic(8);"><img src="http://placehold.it/120x90"><br/>
+		<a href="#" onclick="choosePic(9);"><img src="http://placehold.it/120x90"></a>
+		<a href="#" onclick="choosePic(10);"><img src="http://placehold.it/120x90"></a>
+		<a href="#" onclick="choosePic(11);"><img src="http://placehold.it/120x90"></a>
+		<a href="#" onclick="choosePic(12);"><img src="http://placehold.it/120x90"><br/>
+		<a href="#" onclick="choosePic(13);"><img src="http://placehold.it/120x90"></a>
+		<a href="#" onclick="choosePic(14);"><img src="http://placehold.it/120x90"></a>
+		<a href="#" onclick="choosePic(15);"><img src="http://placehold.it/120x90"></a>
+		<a href="#" onclick="choosePic(16);"><img src="http://placehold.it/120x90"></a><br/>
+	</div>
 
 	<div id="pic" style="background-image:url('uploads/homeimg.jpg');">
 		<h1 class='black75'><span class='img'></span><span class='seo'>Simple.GRD</span></h1>
 		<div id='uploadbut' onclick="toggleShowUploadModal()" class='black75' title='upload new image'><span></span></div>
-		<div id='editbut' class='black75' title='edit image'><span></span></div>
+		<div id='editbut' class='black75' title='edit image' onclick="addLocation(); return true;"><span></span></div>
 		<div id='reloadbut' class='black75' title='reload image'><span></span></div>
 		<h2 class='description'>
 		CaRAZY<br/>
@@ -238,14 +270,12 @@
 		AWESOMENSS,<br/>
 		FOR YOU.
 		</h2>
+			
 		
-		<div class="plus" id='' style='left: 300px;top: 200px;'></div>
-		<div class="plus" id='' style='left: 700px;top: 400px;'></div>
-		
-		<div class='preview' id='' style="left: 350px;top: 350px;">
+		<!--<div class='preview' id='' style="left: 350px;top: 350px;">
 			<div class='plus'></div>
 			<img src='uploads/previewimg.jpg'/>
-		</div>
+		</div>-->
 	</div>
 </div>
 
@@ -261,5 +291,54 @@
 		} 				
 	}
 </script>
+
+	<script>
+
+	var x,y;
+	jQuery(document).ready(function(){
+		$(choosePicture).hide();
+	   	$("#pic").click(function(e){
+	   		if (locAdd==true)
+	   		{
+   				x = e.pageX;
+				y = e.pageY;
+				$(choosePicture).show();
+					
+			}
+	   	}); 
+	})
+	var locAdd = false;
+	
+	function choosePic(pic)
+	{
+		
+		$("#pic").append("<div class=\"plus\" id=\""+pic+"\" style=\"left: "+ (x - 33) + "px; top: " + (y - 33) + "px;\"></div>");
+		$(choosePicture).hide();
+
+	}
+	
+	function addLocation()
+	{
+		if (locAdd == false)
+		{
+			setTimeout(function() {locAdd = true;}, 200);
+			$(uploadbut).hide();
+			$(reloadbut).hide();
+			$(".description").hide();
+		}
+		else
+		{
+			locAdd = false;
+			$(uploadbut).show();
+			$(reloadbut).show();
+			$(".description").show();
+	
+		}
+		
+	}
+	
+	</script>
+	
+
 </body>
 </html>
